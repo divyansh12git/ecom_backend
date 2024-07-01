@@ -1,6 +1,6 @@
 import express from "express";
 import authRouter from "./auth/handler.js";
-
+import cors from "cors";
 import { CreateUser, getUserData } from "./db/handler.js";
 import { getAllItems,addToCart, createCart } from "./db/carthandler.js";
 
@@ -8,6 +8,8 @@ import bodyParser from "body-parser";
 
 const server=express();
 const PORT=5000;
+
+server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(authRouter);
 
